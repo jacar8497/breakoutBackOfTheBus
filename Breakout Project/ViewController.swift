@@ -24,21 +24,17 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var paddleDynamicBehavior: UIDynamicItemBehavior!
     
+    var ballView = UIView()
+    
+    var paddleOneView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpViews()
     }
     
     
-    func setUpViews()
-    {
-        let paddle = UIView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-        paddle.backgroundColor = UIColor.blue
-        view.addSubview(paddle)
-    
-    }
-    
+  
     
     
     

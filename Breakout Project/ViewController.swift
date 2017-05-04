@@ -8,20 +8,48 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var paddle = UIView()
     
     var ball = UIView()
+    
+    var blockOne = UIView()
+    
+    var blockTwo = UIView()
+    
+    var blockThree = UIView()
+    
+    var blockFour = UIView()
+    
+    var blockFive = UIView()
+    
+    var blockSix = UIView()
+    
+    var blockSeven = UIView()
+    
+    var blockEight = UIView()
+    
+    var blockNine = UIView()
+    
+    var blockTen = UIView()
+    
+    var screenWidth = Float(UIScreen.main.bounds.width)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let paddleView = CGRect(x: 167, y: 700, width: 100, height: 25)
+        let paddleView = CGRect(x: 167, y: 700, width: 110, height: 25)
         
         paddle = UIView(frame: paddleView)
         
-        let ballView = CGRect(x: 100, y: 100, width: 25, height: 25)
+        let ballView = CGRect(x: 167, y: 650, width: 25, height: 25)
+        
+        let blockWidth = (screenWidth - 30)/5
+        
+        let blockViewOne = UIView(frame: CGRect(x: 10, y: 10, width: Int(blockWidth), height: 20))
+        
+        let blockViewTwo = UIView(frame: CGRect(x: 15, y: 10, width: Int(blockWidth), height: 20))
         
         ball = UIView(frame: ballView)
         
@@ -31,39 +59,77 @@ class ViewController: UIViewController {
         
         ball.backgroundColor = UIColor.black
         
+        blockViewOne.backgroundColor = UIColor.black
+        
         view.addSubview(paddle)
         
         view.addSubview(ball)
         
-
+        view.addSubview(blockViewOne)
+        
+        view.addSubview(blockViewTwo)
+        
     }
     
     
-  
     
     
     
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        
-        ballView.layer.cornerRadius = 12.0
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        /*override func viewDidAppear(_ animated: Bool) {
         
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         
-        pushBehavior = UIPushBehavior(items: [ballView], mode: UIPushBehaviorMode.instantaneous)
+        pushBehavior = UIPushBehavior(items: [ball], mode: UIPushBehaviorMode.instantaneous)
         
         pushBehavior.pushDirection = CGVector(dx: 0.5, dy: 1.0)
         
         pushBehavior.active = true
         
-        
         pushBehavior.magnitude = 0.3
         
         dynamicAnimator.addBehavior(pushBehavior)
         
-        collisionBehavior = UICollisionBehavior(items: [ballView])
+        collisionBehavior = UICollisionBehavior(items: [ball])
         
         collisionBehavior.collisionMode = UICollisionBehaviorMode.everything
         
@@ -72,7 +138,7 @@ class ViewController: UIViewController {
         
         dynamicAnimator.addBehavior(collisionBehavior)
         
-        ballDynamicBehavior = UIDynamicItemBehavior(items: [ballView])
+        ballDynamicBehavior = UIDynamicItemBehavior(items: [ball])
         
         ballDynamicBehavior.allowsRotation = false
         
@@ -84,7 +150,7 @@ class ViewController: UIViewController {
         
         dynamicAnimator.addBehavior(ballDynamicBehavior)
         
-        paddleDynamicBehavior = UIDynamicItemBehavior(items: [paddleOneView])
+        paddleDynamicBehavior = UIDynamicItemBehavior(items: [paddle])
         
         paddleDynamicBehavior.allowsRotation = false
         
@@ -117,5 +183,6 @@ class ViewController: UIViewController {
     }
     
     
+}\*
+*/
 }
-

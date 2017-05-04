@@ -10,6 +10,17 @@ import UIKit
 
 class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
+    
+    var dynamicAnimator = UIDynamicAnimator()
+    
+    var pushBehavior: UIPushBehavior!
+    
+    var collisionBehavior: UICollisionBehavior!
+    
+    var ballDynamicBehavior: UIDynamicItemBehavior!
+    
+    var paddleDynamicBehavior: UIDynamicItemBehavior!
+    
     var paddle = UIView()
     
     var ball = UIView()
@@ -220,19 +231,21 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
-        self.ballView.backgroundColor = UIColor.cyan
+        self.ball.backgroundColor = UIColor.cyan
         print("In second delegate method")
     }
     
     @IBAction func paddleDragged(_ sender: UIPanGestureRecognizer) {
         
-        paddleOneView.center = CGPoint(x: sender.location(in: self.view).x, y: paddleOneView.center.y)
+        paddle.center = CGPoint(x: sender.location(in: self.view).x, y: paddle.center.y)
         
-        dynamicAnimator.updateItem(usingCurrentState: paddleOneView)
+        dynamicAnimator.updateItem(usingCurrentState: paddle)
         
     }
+ 
     
-    
-}\*
-*/
 }
+
+
+
+

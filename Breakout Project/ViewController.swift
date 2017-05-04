@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollisionBehaviorDelegate {
+    
+    
+    var dynamicAnimator = UIDynamicAnimator()
     
     var paddle = UIView()
     
@@ -115,7 +118,8 @@ class ViewController: UIViewController {
         dynamicAnimator.updateItem(usingCurrentState: paddleOneView)
         
     }
-    
+ 
     
 }
 
+}

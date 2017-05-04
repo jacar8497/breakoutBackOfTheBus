@@ -45,11 +45,27 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         let ballView = CGRect(x: 167, y: 650, width: 25, height: 25)
         
-        let blockWidth = (screenWidth - 30)/5
+        let blockWidth = (screenWidth - 60)/5
         
-        let blockViewOne = UIView(frame: CGRect(x: 10, y: 10, width: Int(blockWidth), height: 20))
+        let blockOne = UIView(frame: CGRect(x: 10, y: 25, width: Int(blockWidth), height: 20))
         
-        let blockViewTwo = UIView(frame: CGRect(x: 15, y: 10, width: Int(blockWidth), height: 20))
+        let blockTwo = UIView(frame: CGRect(x: Int(10+7+blockWidth), y: 25, width: Int(blockWidth), height: 20))
+        
+        let blockThree = UIView(frame: CGRect(x: Int(10+11+2*blockWidth), y: 25, width: Int(blockWidth), height: 20))
+        
+        let blockFour = UIView(frame: CGRect(x: Int(10+18+3*blockWidth), y: 25, width: Int(blockWidth), height: 20))
+        
+        let blockFive = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 25, width: Int(blockWidth), height: 20))
+        
+        let blockSix = UIView(frame: CGRect(x: 10, y: 55, width: Int(blockWidth), height: 20))
+        
+        let blockSeven = UIView(frame: CGRect(x: Int(10+7+blockWidth), y: 55, width: Int(blockWidth), height: 20))
+        
+        let blockEight = UIView(frame: CGRect(x: Int(10+11+2*blockWidth), y: 55, width: Int(blockWidth), height: 20))
+        
+        let blockNine = UIView(frame: CGRect(x: Int(10+18+3*blockWidth), y: 55, width: Int(blockWidth), height: 20))
+        
+        let blockTen = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 55, width: Int(blockWidth), height: 20))
         
         ball = UIView(frame: ballView)
         
@@ -59,17 +75,51 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         ball.backgroundColor = UIColor.black
         
-        blockViewOne.backgroundColor = UIColor.black
+        blockOne.backgroundColor = UIColor.black
+        
+        blockTwo.backgroundColor = UIColor.black
+        
+        blockThree.backgroundColor = UIColor.black
+        
+        blockFour.backgroundColor = UIColor.black
+        
+        blockFive.backgroundColor = UIColor.black
+        
+        blockSix.backgroundColor = UIColor.black
+        
+        blockSeven.backgroundColor = UIColor.black
+        
+        blockEight.backgroundColor = UIColor.black
+        
+        blockNine.backgroundColor = UIColor.black
+        
+        blockTen.backgroundColor = UIColor.black
         
         view.addSubview(paddle)
         
         view.addSubview(ball)
         
-        view.addSubview(blockViewOne)
+        view.addSubview(blockOne)
         
-        view.addSubview(blockViewTwo)
+        view.addSubview(blockTwo)
         
+        view.addSubview(blockThree)
+        
+        view.addSubview(blockFour)
+        
+        view.addSubview(blockFive)
+        
+        view.addSubview(blockSix)
+        
+        view.addSubview(blockSeven)
+        
+        view.addSubview(blockEight)
+        
+        view.addSubview(blockNine)
+        
+        view.addSubview(blockTen)
     }
+    
     
     
     

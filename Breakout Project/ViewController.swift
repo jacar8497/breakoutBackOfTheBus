@@ -49,8 +49,6 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var screenWidth = Float(UIScreen.main.bounds.width)
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,27 +58,27 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         let ballView = CGRect(x: 167, y: 650, width: 25, height: 25)
         
-        let blockWidth = (screenWidth - 60)/5
+        let blockWidth = (screenWidth - 45)/5
         
-        blockOne = UIView(frame: CGRect(x: 10, y: 25, width: Int(blockWidth), height: 20))
+        blockOne = UIView(frame: CGRect(x: 10, y: 35, width: Int(blockWidth), height: 30))
         
-        blockTwo = UIView(frame: CGRect(x: Int(10+7+blockWidth), y: 25, width: Int(blockWidth), height: 20))
+        blockTwo = UIView(frame: CGRect(x: Int(10+7+blockWidth), y: 35, width: Int(blockWidth), height: 30))
         
-        blockThree = UIView(frame: CGRect(x: Int(10+11+2*blockWidth), y: 25, width: Int(blockWidth), height: 20))
+        blockThree = UIView(frame: CGRect(x: Int(10+11+2*blockWidth), y: 35, width: Int(blockWidth), height: 30))
         
-        blockFour = UIView(frame: CGRect(x: Int(10+18+3*blockWidth), y: 25, width: Int(blockWidth), height: 20))
+        blockFour = UIView(frame: CGRect(x: Int(10+18+3*blockWidth), y: 35, width: Int(blockWidth), height: 30))
         
-        blockFive = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 25, width: Int(blockWidth), height: 20))
+        blockFive = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 35, width: Int(blockWidth), height: 30))
         
-        blockSix = UIView(frame: CGRect(x: 10, y: 55, width: Int(blockWidth), height: 20))
+        blockSix = UIView(frame: CGRect(x: 10, y: 75, width: Int(blockWidth), height: 30))
         
-        blockSeven = UIView(frame: CGRect(x: Int(10+7+blockWidth), y: 55, width: Int(blockWidth), height: 20))
+        blockSeven = UIView(frame: CGRect(x: Int(10+7+blockWidth), y: 75, width: Int(blockWidth), height: 30))
         
-        blockEight = UIView(frame: CGRect(x: Int(10+11+2*blockWidth), y: 55, width: Int(blockWidth), height: 20))
+        blockEight = UIView(frame: CGRect(x: Int(10+11+2*blockWidth), y: 75, width: Int(blockWidth), height: 30))
         
-        blockNine = UIView(frame: CGRect(x: Int(10+18+3*blockWidth), y: 55, width: Int(blockWidth), height: 20))
+        blockNine = UIView(frame: CGRect(x: Int(10+18+3*blockWidth), y: 75, width: Int(blockWidth), height: 30))
         
-        blockTen = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 55, width: Int(blockWidth), height: 20))
+        blockTen = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 75, width: Int(blockWidth), height: 30))
         
         ball = UIView(frame: ballView)
         
@@ -178,8 +176,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.addBehavior(paddleDynamicBehavior)
         
-        
-        blockDynamicBehavior = UIDynamicItemBehavior(items: [blockOne,blockTwo, blockThree, blockFour, blockFive, blockSix, blockSeven,blockEight, blockNine, blockTen])
+        blockDynamicBehavior = UIDynamicItemBehavior(items: [blockOne,blockTwo, blockThree, blockFour, blockFive, blockSix,blockSeven,blockEight, blockNine, blockTen])
         
         blockDynamicBehavior.allowsRotation = false
         

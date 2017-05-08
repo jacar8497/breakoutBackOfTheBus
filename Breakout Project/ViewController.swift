@@ -21,6 +21,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var paddleDynamicBehavior: UIDynamicItemBehavior!
     
+    var blockDynamicBehavior: UIDynamicItemBehavior!
+    
     var paddle = UIView()
     
     var ball = UIView()
@@ -46,6 +48,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     var blockTen = UIView()
     
     var screenWidth = Float(UIScreen.main.bounds.width)
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,6 +177,16 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         paddleDynamicBehavior.density = 1000.0
         
         dynamicAnimator.addBehavior(paddleDynamicBehavior)
+        
+        
+        blockDynamicBehavior = UIDynamicItemBehavior(items: [blockOne,blockTwo, blockThree, blockFour, blockFive, blockSix, blockSeven,blockEight, blockNine, blockTen])
+        
+        blockDynamicBehavior.allowsRotation = false
+        
+        blockDynamicBehavior.density = 1000.0
+        
+        dynamicAnimator.addBehavior(blockDynamicBehavior)
+
         
         
     }

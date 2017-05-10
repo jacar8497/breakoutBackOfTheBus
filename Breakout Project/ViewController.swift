@@ -188,12 +188,16 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.addBehavior(blockDynamicBehavior)
 
-        
-        
     }
     
-    func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
-        
+    func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint)
+    {
+        if ball.center.y > paddle.center.y
+        {
+            ball.removeFromSuperview()
+            
+            collisionBehavior.removeItem(ball)
+        }
     }
     
     

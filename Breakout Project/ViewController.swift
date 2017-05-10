@@ -49,9 +49,11 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var screenWidth = Float(UIScreen.main.bounds.width)
     
+    var blockArray = [UIView]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         let paddleView = CGRect(x: 167, y: 700, width: 110, height: 25)
         
         paddle = UIView(frame: paddleView)
@@ -79,6 +81,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         blockNine = UIView(frame: CGRect(x: Int(10+18+3*blockWidth), y: 75, width: Int(blockWidth), height: 30))
         
         blockTen = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 75, width: Int(blockWidth), height: 30))
+        
+        blockArray = [blockOne, blockTwo, blockThree, blockFour, blockFive, blockSix, blockSeven, blockEight,blockNine, blockTen]
         
         ball = UIView(frame: ballView)
         
@@ -190,23 +194,31 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
         
-        
-        print("collided")
-        
     }
     
     
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
+        
         self.ball.backgroundColor = UIColor.cyan
-        print("In second delegate method")
+        
+        for block in blockArray
+        {
+            if (item1 .isEqual(ball) && item2 .isEqual(block) ) || (item1 .isEqual(block) && item2 .isEqual(ball) )
+            {
+                block.removeFromSuperview()
+                
+                collisionBehavior.removeItem(block)
+            }
+        }
+        
+        
     }
     
-    @IBAction func paddleDragged(_ sender: UIPanGestureRecognizer) {
-        
+    @IBAction func paddleDragged(_ sender: UIPanGestureRecognizer)
+    {
         paddle.center = CGPoint(x: sender.location(in: self.view).x, y: paddle.center.y)
         
         dynamicAnimator.updateItem(usingCurrentState: paddle)
-        
     }
 
 }

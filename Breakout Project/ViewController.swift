@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
+    @IBOutlet weak var buttonOutlet: UIButton!
     
     var dynamicAnimator = UIDynamicAnimator()
     
@@ -140,17 +141,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         override func viewDidAppear(_ animated: Bool) {
         
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
-        
-        pushBehavior = UIPushBehavior(items: [ball], mode: UIPushBehaviorMode.instantaneous)
-        
-        pushBehavior.pushDirection = CGVector(dx: 0.5, dy: 1.0)
-        
-        pushBehavior.active = true
-        
-        pushBehavior.magnitude = 0.3
-        
-        dynamicAnimator.addBehavior(pushBehavior)
-        
+            
         collisionBehavior = UICollisionBehavior(items: [ball, paddle, blockOne, blockTwo,blockThree,blockFour, blockFive, blockSix, blockSeven, blockEight, blockNine, blockTen])
         
         collisionBehavior.collisionMode = UICollisionBehaviorMode.everything
@@ -189,7 +180,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         dynamicAnimator.addBehavior(blockDynamicBehavior)
 
     }
-    
+
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint)
     {
         if ball.center.y > paddle.center.y
@@ -215,6 +206,22 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             }
         }
         
+        
+    }
+    
+    @IBAction func startUp(_ sender: UIButton) {
+        
+        buttonOutlet.removeFromSuperview()
+        
+        pushBehavior = UIPushBehavior(items: [ball], mode: UIPushBehaviorMode.instantaneous)
+        
+        pushBehavior.pushDirection = CGVector(dx: 0.5, dy: 1.0)
+        
+        pushBehavior.active = true
+        
+        pushBehavior.magnitude = 0.3
+        
+        dynamicAnimator.addBehavior(pushBehavior)
         
     }
     

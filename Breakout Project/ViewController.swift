@@ -89,29 +89,29 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         ball.layer.cornerRadius = 20
         
-        paddle.backgroundColor = UIColor.black
+        paddle.backgroundColor = UIColor.brown
         
         ball.backgroundColor = UIColor.black
         
-        blockOne.backgroundColor = UIColor.black
+        blockOne.backgroundColor = UIColor.magenta
         
-        blockTwo.backgroundColor = UIColor.black
+        blockTwo.backgroundColor = UIColor.magenta
         
-        blockThree.backgroundColor = UIColor.black
+        blockThree.backgroundColor = UIColor.magenta
         
-        blockFour.backgroundColor = UIColor.black
+        blockFour.backgroundColor = UIColor.magenta
         
-        blockFive.backgroundColor = UIColor.black
+        blockFive.backgroundColor = UIColor.magenta
         
-        blockSix.backgroundColor = UIColor.black
+        blockSix.backgroundColor = UIColor.magenta
         
-        blockSeven.backgroundColor = UIColor.black
+        blockSeven.backgroundColor = UIColor.magenta
         
-        blockEight.backgroundColor = UIColor.black
+        blockEight.backgroundColor = UIColor.magenta
         
-        blockNine.backgroundColor = UIColor.black
+        blockNine.backgroundColor = UIColor.magenta
         
-        blockTen.backgroundColor = UIColor.black
+        blockTen.backgroundColor = UIColor.magenta
         
         view.addSubview(paddle)
         

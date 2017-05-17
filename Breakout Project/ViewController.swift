@@ -52,6 +52,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var blockArray = [UIView]()
     
+    var count = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -188,6 +190,14 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             ball.removeFromSuperview()
             
             collisionBehavior.removeItem(ball)
+            
+            let youLose = UIAlertController(title: "You Lose", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAlert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in})
+            
+            youLose.addAction(okAlert)
+            
+            present(youLose, animated: true, completion: nil)
         }
     }
     
@@ -200,12 +210,38 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         {
             if (item1 .isEqual(ball) && item2 .isEqual(block) ) || (item1 .isEqual(block) && item2 .isEqual(ball) )
             {
+                if block.backgroundColor == UIColor.magenta
+                {
+                    
+                block.backgroundColor = UIColor.blue
+                    
+                }
+                
+                else if block.backgroundColor == UIColor.blue
+                {
+        
                 block.removeFromSuperview()
                 
                 collisionBehavior.removeItem(block)
+                    
+                }
+                
+                count += 1
+                
+                if count == 10
+                {
+                    let blockAway = UIAlertController(title: "You Done", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in})
+                    
+                    blockAway.addAction(okAction)
+                    
+                    present(blockAway, animated: true, completion: nil)
+                
+                }
             }
+            
         }
-        
         
     }
     

@@ -221,14 +221,12 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
                 {
         
                 block.removeFromSuperview()
-                
-                collisionBehavior.removeItem(block)
                     
                 }
                 
                 count += 1
                 
-                if count == 10
+                if count == 20
                 {
                     let blockAway = UIAlertController(title: "You Done", message: nil, preferredStyle: UIAlertControllerStyle.alert)
                     
@@ -237,6 +235,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
                     blockAway.addAction(okAction)
                     
                     present(blockAway, animated: true, completion: nil)
+                    
+                    collisionBehavior.removeItem(paddle)
                 
                 }
             }

@@ -1,16 +1,16 @@
 //
-//  ViewController.swift
+//  SecondLevelViewController.swift
 //  Breakout Project
 //
-//  Created by student8 on 4/27/17.
+//  Created by student8 on 5/19/17.
 //  Copyright © 2017 John Hersey High School. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController, UICollisionBehaviorDelegate {
+class SecondLevelViewController: UIViewController, UICollisionBehaviorDelegate {
     
-    /*@IBOutlet weak var buttonOutlet: UIButton!
+    @IBOutlet weak var startUpButton: UIButton!
     
     var dynamicAnimator = UIDynamicAnimator()
     
@@ -48,16 +48,26 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var blockTen = UIView()
     
+    var blockEleven = UIView()
+    
+    var blockTwelve = UIView()
+    
+    var blockThirteen = UIView()
+    
+    var blockFourteen = UIView()
+    
+    var blockFifteen = UIView()
+    
     var screenWidth = Float(UIScreen.main.bounds.width)
     
     var blockArray = [UIView]()
     
     var count = 0
-    
-    */override func viewDidLoad() {
+
+    override func viewDidLoad() {
         super.viewDidLoad()
-    
-        /*let paddleView = CGRect(x: 167, y: 700, width: 110, height: 25)
+        
+        let paddleView = CGRect(x: 167, y: 700, width: 110, height: 25)
         
         paddle = UIView(frame: paddleView)
         
@@ -65,15 +75,15 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         let blockWidth = (screenWidth - 45)/5
         
-        blockOne = UIView(frame: CGRect(x: 10, y: 35, width: Int(blockWidth), height: 30))
+        blockOne = UIView(frame: CGRect(x: 10, y: 115, width: Int(blockWidth), height: 30))
         
-        blockTwo = UIView(frame: CGRect(x: Int(10+7+blockWidth), y: 35, width: Int(blockWidth), height: 30))
+        blockTwo = UIView(frame: CGRect(x: Int(10+7+blockWidth), y: 115, width: Int(blockWidth), height: 30))
         
-        blockThree = UIView(frame: CGRect(x: Int(10+11+2*blockWidth), y: 35, width: Int(blockWidth), height: 30))
+        blockThree = UIView(frame: CGRect(x: Int(10+11+2*blockWidth), y: 115, width: Int(blockWidth), height: 30))
         
-        blockFour = UIView(frame: CGRect(x: Int(10+18+3*blockWidth), y: 35, width: Int(blockWidth), height: 30))
+        blockFour = UIView(frame: CGRect(x: Int(10+18+3*blockWidth), y: 115, width: Int(blockWidth), height: 30))
         
-        blockFive = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 35, width: Int(blockWidth), height: 30))
+        blockFive = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 115, width: Int(blockWidth), height: 30))
         
         blockSix = UIView(frame: CGRect(x: 10, y: 75, width: Int(blockWidth), height: 30))
         
@@ -85,7 +95,17 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         blockTen = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 75, width: Int(blockWidth), height: 30))
         
-        blockArray = [blockOne, blockTwo, blockThree, blockFour, blockFive, blockSix, blockSeven, blockEight,blockNine, blockTen]
+        blockEleven = UIView(frame: CGRect(x: 10, y: 155, width: Int(blockWidth), height: 30))
+        
+        blockTwelve = UIView(frame: CGRect(x: Int(10+7+blockWidth), y: 155, width: Int(blockWidth), height: 30))
+        
+        blockThirteen = UIView(frame: CGRect(x: Int(10+11+2*blockWidth), y: 155, width: Int(blockWidth), height: 30))
+        
+        blockFourteen = UIView(frame: CGRect(x: Int(10+18+3*blockWidth), y: 155, width: Int(blockWidth), height: 30))
+        
+        blockFifteen = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 155, width: Int(blockWidth), height: 30))
+        
+        blockArray = [blockOne, blockTwo, blockThree, blockFour, blockFive, blockSix, blockSeven, blockEight,blockNine, blockTen, blockEleven, blockTwelve, blockThirteen, blockFourteen, blockFifteen]
         
         ball = UIView(frame: ballView)
         
@@ -115,6 +135,16 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         blockTen.backgroundColor = UIColor.magenta
         
+        blockEleven.backgroundColor = UIColor.magenta
+        
+        blockTwelve.backgroundColor = UIColor.magenta
+        
+        blockThirteen.backgroundColor = UIColor.magenta
+        
+        blockFourteen.backgroundColor = UIColor.magenta
+        
+        blockFifteen.backgroundColor = UIColor.magenta
+        
         view.addSubview(paddle)
         
         view.addSubview(ball)
@@ -138,13 +168,23 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         view.addSubview(blockNine)
         
         view.addSubview(blockTen)
+        
+        view.addSubview(blockEleven)
+        
+        view.addSubview(blockTwelve)
+        
+        view.addSubview(blockThirteen)
+        
+        view.addSubview(blockFourteen)
+        
+        view.addSubview(blockFifteen)
     }
     
-        override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
-            
-        collisionBehavior = UICollisionBehavior(items: [ball, paddle, blockOne, blockTwo,blockThree,blockFour, blockFive, blockSix, blockSeven, blockEight, blockNine, blockTen])
+        
+        collisionBehavior = UICollisionBehavior(items: [ball, paddle, blockOne, blockTwo,blockThree,blockFour, blockFive, blockSix, blockSeven, blockEight, blockNine, blockTen, blockEleven, blockTwelve, blockThirteen, blockFourteen, blockFifteen])
         
         collisionBehavior.collisionMode = UICollisionBehaviorMode.everything
         
@@ -173,16 +213,16 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.addBehavior(paddleDynamicBehavior)
         
-        blockDynamicBehavior = UIDynamicItemBehavior(items: [blockOne,blockTwo, blockThree, blockFour, blockFive, blockSix,blockSeven,blockEight, blockNine, blockTen])
+        blockDynamicBehavior = UIDynamicItemBehavior(items: [blockOne,blockTwo, blockThree, blockFour, blockFive, blockSix,blockSeven,blockEight, blockNine, blockTen, blockEleven, blockTwelve, blockThirteen, blockFourteen, blockFifteen])
         
         blockDynamicBehavior.allowsRotation = false
         
         blockDynamicBehavior.density = 1000.0
         
         dynamicAnimator.addBehavior(blockDynamicBehavior)
-
+        
     }
-
+    
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint)
     {
         if ball.center.y > paddle.center.y
@@ -213,15 +253,22 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
                 if block.backgroundColor == UIColor.magenta
                 {
                     
-                block.backgroundColor = UIColor.blue
+                    block.backgroundColor = UIColor.blue
+                    
+                }
+                    
+                else if block.backgroundColor == UIColor.blue
+                {
+                    
+                    block.backgroundColor = UIColor.red
                     
                 }
                 
-                else if block.backgroundColor == UIColor.blue
+                else if block.backgroundColor == UIColor.red
                 {
-        
-                block.removeFromSuperview()
+                    block.removeFromSuperview()
                     
+                    collisionBehavior.removeItem(block)
                 }
                 
                 count += 1
@@ -237,7 +284,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
                     present(blockAway, animated: true, completion: nil)
                     
                     collisionBehavior.removeItem(paddle)
-                
+                    
                 }
             }
             
@@ -247,7 +294,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     @IBAction func startUp(_ sender: UIButton) {
         
-        buttonOutlet.removeFromSuperview()
+        startUpButton.removeFromSuperview()
         
         pushBehavior = UIPushBehavior(items: [ball], mode: UIPushBehaviorMode.instantaneous)
         
@@ -268,7 +315,4 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         dynamicAnimator.updateItem(usingCurrentState: paddle)
     }
 
-}
-*/
-}
 }

@@ -28,6 +28,10 @@ class FirstLevelViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var ball = UIView()
     
+    var blockArray = [UIView]()
+    
+    var count = 0
+    
     var blockOne = UIView()
     
     var blockTwo = UIView()
@@ -48,12 +52,7 @@ class FirstLevelViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var blockTen = UIView()
     
-    var screenWidth = Float(UIScreen.main.bounds.width)
     
-    var blockArray = [UIView]()
-    
-    var count = 0
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,6 +61,72 @@ class FirstLevelViewController: UIViewController, UICollisionBehaviorDelegate {
         paddle = UIView(frame: paddleView)
         
         let ballView = CGRect(x: 167, y: 650, width: 25, height: 25)
+        
+        ball = UIView(frame: ballView)
+        
+        ball.layer.cornerRadius = 20
+        
+        paddle.backgroundColor = UIColor.brown
+        
+        ball.backgroundColor = UIColor.black
+        
+        view.addSubview(paddle)
+        
+        view.addSubview(ball)
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
+        
+        createBlock()
+        
+        collisionBehavior = UICollisionBehavior(items: [ball, paddle, blockOne, blockTwo, blockThree, blockFour, blockFive,blockSix, blockSeven, blockEight, blockNine, blockTen])
+        
+        collisionBehavior.collisionMode = UICollisionBehaviorMode.everything
+        
+        collisionBehavior.translatesReferenceBoundsIntoBoundary = true
+        collisionBehavior.collisionDelegate = self
+        
+        dynamicAnimator.addBehavior(collisionBehavior)
+        
+        
+        ballDynamicBehavior = UIDynamicItemBehavior(items: [ball])
+        
+        ballDynamicBehavior.allowsRotation = false
+        
+        ballDynamicBehavior.elasticity = 1.0
+        
+        ballDynamicBehavior.friction = 0.0
+        
+        ballDynamicBehavior.resistance = 0.0
+        
+        dynamicAnimator.addBehavior(ballDynamicBehavior)
+        
+        
+        paddleDynamicBehavior = UIDynamicItemBehavior(items: [paddle])
+        
+        paddleDynamicBehavior.allowsRotation = false
+        
+        paddleDynamicBehavior.density = 1000.0
+        
+        dynamicAnimator.addBehavior(paddleDynamicBehavior)
+        
+        
+        blockDynamicBehavior = UIDynamicItemBehavior(items: [blockOne, blockTwo, blockThree, blockFour, blockFive,blockSix, blockSeven, blockEight, blockNine, blockTen])
+        
+        blockDynamicBehavior.allowsRotation = false
+        
+        blockDynamicBehavior.density = 1000.0
+        
+        dynamicAnimator.addBehavior(blockDynamicBehavior)
+        
+    }
+    
+    func createBlock()
+    {
+        let screenWidth = Float(UIScreen.main.bounds.width)
         
         let blockWidth = (screenWidth - 45)/5
         
@@ -85,16 +150,6 @@ class FirstLevelViewController: UIViewController, UICollisionBehaviorDelegate {
         
         blockTen = UIView(frame: CGRect(x: Int(10+25+4*blockWidth), y: 75, width: Int(blockWidth), height: 30))
         
-        blockArray = [blockOne, blockTwo, blockThree, blockFour, blockFive, blockSix, blockSeven, blockEight,blockNine, blockTen]
-        
-        ball = UIView(frame: ballView)
-        
-        ball.layer.cornerRadius = 20
-        
-        paddle.backgroundColor = UIColor.brown
-        
-        ball.backgroundColor = UIColor.black
-        
         blockOne.backgroundColor = UIColor.magenta
         
         blockTwo.backgroundColor = UIColor.magenta
@@ -115,10 +170,6 @@ class FirstLevelViewController: UIViewController, UICollisionBehaviorDelegate {
         
         blockTen.backgroundColor = UIColor.magenta
         
-        view.addSubview(paddle)
-        
-        view.addSubview(ball)
-        
         view.addSubview(blockOne)
         
         view.addSubview(blockTwo)
@@ -138,48 +189,8 @@ class FirstLevelViewController: UIViewController, UICollisionBehaviorDelegate {
         view.addSubview(blockNine)
         
         view.addSubview(blockTen)
-    }
-    override func viewDidAppear(_ animated: Bool) {
         
-        dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
-        
-        collisionBehavior = UICollisionBehavior(items: [ball, paddle, blockOne, blockTwo,blockThree,blockFour, blockFive, blockSix, blockSeven, blockEight, blockNine, blockTen])
-        
-        collisionBehavior.collisionMode = UICollisionBehaviorMode.everything
-        
-        collisionBehavior.translatesReferenceBoundsIntoBoundary = true
-        collisionBehavior.collisionDelegate = self
-        
-        dynamicAnimator.addBehavior(collisionBehavior)
-        
-        ballDynamicBehavior = UIDynamicItemBehavior(items: [ball])
-        
-        ballDynamicBehavior.allowsRotation = false
-        
-        ballDynamicBehavior.elasticity = 1.0
-        
-        ballDynamicBehavior.friction = 0.0
-        
-        ballDynamicBehavior.resistance = 0.0
-        
-        dynamicAnimator.addBehavior(ballDynamicBehavior)
-        
-        paddleDynamicBehavior = UIDynamicItemBehavior(items: [paddle])
-        
-        paddleDynamicBehavior.allowsRotation = false
-        
-        paddleDynamicBehavior.density = 1000.0
-        
-        dynamicAnimator.addBehavior(paddleDynamicBehavior)
-        
-        blockDynamicBehavior = UIDynamicItemBehavior(items: [blockOne,blockTwo, blockThree, blockFour, blockFive, blockSix,blockSeven,blockEight, blockNine, blockTen])
-        
-        blockDynamicBehavior.allowsRotation = false
-        
-        blockDynamicBehavior.density = 1000.0
-        
-        dynamicAnimator.addBehavior(blockDynamicBehavior)
-        
+        blockArray = [blockOne, blockTwo, blockThree, blockFour, blockFive, blockSix, blockSeven, blockEight,blockNine, blockTen]
     }
     
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint)
@@ -207,10 +218,11 @@ class FirstLevelViewController: UIViewController, UICollisionBehaviorDelegate {
         
         for block in blockArray
         {
-            if (item1 .isEqual(ball) && item2 .isEqual(block) ) || (item1 .isEqual(block) && item2 .isEqual(ball) )
+            if (item1.isEqual(ball) && item2.isEqual(block) ) || (item1.isEqual(block) && item2.isEqual(ball) )
             {
                 if block.backgroundColor == UIColor.magenta
                 {
+                    print("Ok")
                     
                     block.backgroundColor = UIColor.blue
                     
@@ -270,7 +282,6 @@ class FirstLevelViewController: UIViewController, UICollisionBehaviorDelegate {
     }
     
 }
-
 
 
 
